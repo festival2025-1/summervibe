@@ -1,3 +1,14 @@
+// 2초 뒤 스크롤 힌트 숨기기
+window.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const hint = document.getElementById("scrollHint");
+    if (hint) {
+      hint.classList.add("hidden");
+    }
+  }, 2000);
+});
+
+
 // Viewport height 계산해서 CSS 변수로 설정
 function setVhVariable() {
   const vh = window.innerHeight * 0.01;
@@ -30,36 +41,6 @@ window.addEventListener('resize', setVhVariable);
       if (current >= totalSlides) current = totalSlides - 1;
       updateSlide();
       showArrowsTemporarily();
-    }
-
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-let arrowTimeout;
-
-function showArrowsTemporarily() {
-  // 화살표 보이기
-  prevBtn.style.opacity = '1';
-  nextBtn.style.opacity = '1';
-
-  // 기존 타이머 제거 후 새로 시작
-  if (arrowTimeout) clearTimeout(arrowTimeout);
-  arrowTimeout = setTimeout(() => {
-    prevBtn.style.opacity = '0';
-    nextBtn.style.opacity = '0';
-  }, 2000); // 2초 후 숨김
-}
-    function toggleMenu() {
-      document.getElementById('menuList').classList.toggle('show');
-    }
-
-    function goToSlideInstant(index) {
-      slidesWrapper.style.transition = 'none';
-      current = index;
-      updateSlide();
-      setTimeout(() => {
-        slidesWrapper.style.transition = 'transform 0.5s ease';
-      }, 50);
-      document.getElementById('menuList').classList.remove('show');
     }
 
     let startX = 0, startY = 0;
@@ -138,12 +119,3 @@ document.addEventListener('DOMContentLoaded', function () {
   updateSlide();          // 초기 슬라이드 업데이트
   showArrowsTemporarily(); // 첫 진입 시 화살표 표시
 
-  // 팝업 닫기 기능
-  const popup = document.getElementById('popup-overlay');
-  const closeBtn = document.getElementById('popup-close');
-  if (popup && closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      popup.style.display = 'none';
-    });
-  }
-});
