@@ -1,11 +1,15 @@
-window.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    const hint = document.getElementById("scrollHint");
-    if (hint) {
-      hint.classList.add("hidden");
-    }
+const mainImage = document.getElementById("mainImage");
+const scrollHint = document.getElementById("scrollHint");
+
+mainImage.addEventListener("load", () => {
+  // 이미지 로드 후 2초 동안 힌트 표시
+  scrollHint.classList.add("show");
+
+  setTimeout(() => {
+    scrollHint.classList.remove("show");
   }, 2000);
 });
+
 
 // [3] Viewport height → CSS 변수
 function setVhVariable() {
