@@ -1,15 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // [1] 스크롤 힌트 2초 후 사라지기
-  setTimeout(() => {
+window.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
     const hint = document.getElementById("scrollHint");
     if (hint) {
       hint.classList.add("hidden");
     }
   }, 2000);
-
-  // [2] 슬라이드 관련 처리
-  updateSlide();          
-  showArrowsTemporarily(); 
 });
 
 // [3] Viewport height → CSS 변수
